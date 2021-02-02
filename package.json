@@ -1,0 +1,21 @@
+{
+  "name": "market",
+  "version": "0.1.0",
+  "scripts": {
+    "create": "graph create Dego/treasureland --node https://api.thegraph.com/deploy/",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy Dego/treasureland --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.18.0",
+    "@graphprotocol/graph-ts": "^0.18.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "truffle": "^5.0.4",
+    "truffle-contract": "^4.0.5",
+    "truffle-hdwallet-provider": "^1.0.4"
+  }
+}

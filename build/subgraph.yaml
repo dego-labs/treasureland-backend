@@ -1,0 +1,268 @@
+specVersion: 0.0.3
+description: Market for main
+repository: https://
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: GegoTokenV1
+    network: mainnet
+    source:
+      address: "0x8AF9B3021E3d34b6c82f937d5E7b6C777c8E60dC"
+      abi: GegoFactoryV1
+      startBlock: 1393812
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: GegoTokenV1/GegoTokenV1.wasm
+      entities:
+        - GegoFactoryV1
+      abis:
+        - name: GegoFactoryV1
+          file: GegoTokenV1/abis/GegoFactoryV1.json
+      eventHandlers:
+        - event: GegoAdded(indexed uint256,uint256,uint256,uint256,uint256,uint256,uint256,address)
+          handler: handleGegoV1Added
+        - event: GegoBurn(indexed uint256,uint256)
+          handler: handleGegoV1Burn
+  - kind: ethereum/contract
+    name: GegoTokenV2
+    network: mainnet
+    source:
+      address: "0xe5c0c004ABf5585dCACf95893C5866CF59f59b9c"
+      abi: GegoFactoryV2
+      startBlock: 2027798
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: GegoTokenV2/GegoTokenV2.wasm
+      entities:
+        - GegoFactoryV2
+      abis:
+        - name: GegoFactoryV2
+          file: GegoTokenV2/abis/GegoFactoryV2.json
+      eventHandlers:
+        - event: GegoAdded(indexed
+            uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,uint256,uint256)
+          handler: handleGegoV2Added
+        - event: GegoBurn(indexed uint256,uint256,address)
+          handler: handleGegoV2Burn
+  - kind: ethereum/contract
+    name: GegoArt
+    network: mainnet
+    source:
+      address: "0x837eC8670EdD9Cd1c5c8882c34F3c5762CF8aA8D"
+      startBlock: 2626372
+      abi: GegoArtFactory
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: GegoArt/GegoArt.wasm
+      entities:
+        - GegoArtFactory
+      abis:
+        - name: GegoArtFactory
+          file: GegoArt/abis/GegoArtFactory.json
+      eventHandlers:
+        - event: GegoArtAdded(indexed uint256,uint256,uint256,uint256,address,address,string)
+          handler: handleArtAdded
+        - event: GegoArtBurn(indexed uint256,address,uint256)
+          handler: handleArtBurn
+  - kind: ethereum/contract
+    name: BCFToken
+    network: mainnet
+    source:
+      address: "0x8f83714bC6F0878dEe533a31F92e52B3e9D893a0"
+      abi: NFT721
+      startBlock: 1301617
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: BCFToken/BCFToken.wasm
+      entities:
+        - BCFToken
+      abis:
+        - name: NFT721
+          file: BCFToken/abis/NFT721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleBCFToken
+  - kind: ethereum/contract
+    name: MATHCON2
+    network: mainnet
+    source:
+      address: "0x4b8A1B8CF55d0AF67C308Ce22B4e4c11b04faEb0"
+      abi: NFT721
+      startBlock: 1562021
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: BCFToken/BCFToken.wasm
+      entities:
+        - MATHCON2
+      abis:
+        - name: NFT721
+          file: MATHCON2/abis/NFT721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleMATHCON2
+  - kind: ethereum/contract
+    name: BurgerNFT
+    network: mainnet
+    source:
+      address: "0xD16253685C29ab6BDCd918bee3Dd506F4E5446D4"
+      abi: NFT721
+      startBlock: 934636
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: BCFToken/BCFToken.wasm
+      entities:
+        - BurgerNFT
+      abis:
+        - name: NFT721
+          file: BurgerNFT/abis/NFT721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleBurgerNFT
+  - kind: ethereum/contract
+    name: PancakeBunnie
+    network: mainnet
+    source:
+      address: "0xdf7952b35f24acf7fc0487d01c8d5690a60dba07"
+      abi: NFT721
+      startBlock: 2993855
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: BCFToken/BCFToken.wasm
+      entities:
+        - PancakeBunnie
+      abis:
+        - name: NFT721
+          file: PancakeBunnie/abis/NFT721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handlePancakeBunnie
+  - kind: ethereum/contract
+    name: BinanceNFT
+    network: mainnet
+    source:
+      address: "0xc014b45d680b5a4bf51ccda778a68d5251c14b5e"
+      abi: NFT721
+      startBlock: 2281041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: BCFToken/BCFToken.wasm
+      entities:
+        - BinanceNFT
+      abis:
+        - name: NFT721
+          file: BinanceNFT/abis/NFT721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleBinanceNFT
+  - kind: ethereum/contract
+    name: CocosNFT
+    network: mainnet
+    source:
+      address: "0xf5a33E4079c025f88387240fc4de3757659c06a7"
+      abi: CocosNFTFactory
+      startBlock: 4296306
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: GegoTokenV2/GegoTokenV2.wasm
+      entities:
+        - CocosNFT
+      abis:
+        - name: CocosNFTFactory
+          file: CocosNFT/abis/CocosNFTFactory.json
+      eventHandlers:
+        - event: CocosNFTAdded(indexed
+            uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,uint256,uint256)
+          handler: handleCocosNFTAdded
+        - event: CocosNFTBurn(indexed uint256,uint256,address)
+          handler: handleCocosNFTBurn
+  - kind: ethereum/contract
+    name: Bondly
+    network: mainnet
+    source:
+      address: "0x217C0bda1b20Aa4860ef78519AD684DA97B7f449"
+      abi: NFT1155
+      startBlock: 3292507
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: Bondly/Bondly.wasm
+      entities:
+        - Bondly
+      abis:
+        - name: NFT1155
+          file: Bondly/abis/NFT1155.json
+      eventHandlers:
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleBondlySingle
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleBondlyBatch
+  - kind: ethereum/contract
+    name: NFT1155Market
+    network: mainnet
+    source:
+      address: "0x4c00e84c2B34660Dc5262E7D7bE6D5c3BB0Cbf0B"
+      startBlock: 3548299
+      abi: NFT1155Market
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: NFT1155Market/NFT1155Market.wasm
+      entities:
+        - GegoSaleObj1155
+      abis:
+        - name: NFT1155Market
+          file: NFT1155Market/abis/NFT1155Market.json
+      eventHandlers:
+        - event: eveNewSales(indexed
+            uint256,uint256,address,address,address,uint256,uint256,address)
+          handler: handleNewSales
+        - event: eveCancelSales(indexed uint256,uint256)
+          handler: handleCancelSales
+        - event: eveSales(indexed uint256,uint256,address,uint256,uint256,uint256,uint256)
+          handler: handleBuy
+  - kind: ethereum/contract
+    name: NFTMarket
+    network: mainnet
+    source:
+      address: "0xD0Ccd2E103FDA6a7d2F501190Ecd878b64744cCe"
+      startBlock: 2340080
+      abi: NFTMarket
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: NFTMarket/NFTMarket.wasm
+      entities:
+        - GegoSaleObj
+      abis:
+        - name: NFTMarket
+          file: NFTMarket/abis/NFTMarket.json
+      eventHandlers:
+        - event: eveNewSales(indexed
+            uint256,uint256,address,address,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleNewSales
+        - event: eveCancelSales(indexed uint256,uint256)
+          handler: handleCancelSales
+        - event: eveSales(indexed uint256,uint256,address,uint256,uint256)
+          handler: handleBuy

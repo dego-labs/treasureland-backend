@@ -1,0 +1,225 @@
+type GegoArt @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  tokenAmount: BigInt!
+  tokenAddress: Bytes!
+  author: Bytes!
+  resName: String!
+  isExist: Boolean!
+}
+
+type GegoTokenV1 @entity {
+  id: ID!
+  index: BigInt!
+  grade: BigInt!
+  quality: BigInt!
+  amount: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  resBaseId: BigInt!
+  author: Bytes!
+  erc20: Bytes
+  ruleId: BigInt
+  nftType: BigInt
+  tLevel: BigInt
+  version: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+}
+
+type GegoTokenV2 @entity {
+  id: ID!
+  index: BigInt!
+  grade: BigInt!
+  quality: BigInt!
+  amount: BigInt!
+  resBaseId: BigInt!
+  tLevel: BigInt!
+  ruleId: BigInt!
+  nftType: BigInt!
+  author: Bytes!
+  erc20: Bytes!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  version: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+}
+
+type BCFToken @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+  owner: Bytes
+}
+
+type MATHCON2 @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+  owner: Bytes
+}
+
+type BurgerNFT @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+  owner: Bytes
+}
+
+type PancakeBunnie @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+  owner: Bytes
+}
+
+type BinanceNFT @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+  owner: Bytes
+}
+
+# type CocosNFT @entity {
+#   id: ID!
+#   index: BigInt!
+#   createdTime: BigInt!
+#   blockNum: BigInt!
+#   isExist: Boolean!
+#   nftAddress: Bytes!
+#   owner: Bytes
+# }
+
+type CocosNFT @entity {
+  id: ID!
+  index: BigInt!
+  grade: BigInt!
+  quality: BigInt!
+  amount: BigInt!
+  resBaseId: BigInt!
+  tLevel: BigInt!
+  ruleId: BigInt!
+  nftType: BigInt!
+  author: Bytes!
+  erc20: Bytes!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  version: BigInt!
+  isExist: Boolean!
+  nftAddress: Bytes!
+}
+
+type GegoSaleObj @entity {
+  id: ID!
+  index: BigInt!
+  tokenId: BigInt!
+  seller: Bytes!
+  buyer: Bytes!
+  nft: Bytes!
+  startTime: BigInt!
+  durationTime: BigInt!
+  maxPrice: BigInt!
+  minPrice: BigInt!
+  finalPrice: BigInt!
+  tipsFee: BigInt!
+  status: BigInt!
+  saleTx: Bytes
+  cancelTx: Bytes
+  buyTx:  Bytes
+  createdTime: BigInt! 
+}
+
+type GegoSaleObjInfo @entity {
+  id: ID! # GegoSaleObj id
+  index: BigInt!
+  tokenId: BigInt!
+  gegoSaleObj: GegoSaleObj!   # reference to GegoSaleObj
+  gegoTokenV1: GegoTokenV1   # reference to GegoTokenV1
+  gegoTokenV2: GegoTokenV2   # reference to GegoTokenV2
+  gegoArt: GegoArt    # reference to GegoArt
+  bcfToken: BCFToken    # reference to BCFToken
+  mathcon2: MATHCON2    # reference to MATHCON2
+  burgerNFT: BurgerNFT    # reference to MATHCON2
+  pancakeBunnie: PancakeBunnie    # reference to PancakeBunnie
+  binanceNFT: BinanceNFT    # reference to BinanceNFT
+  cocosNFT: CocosNFT    # reference to CocosNFT
+  status: BigInt!           # GegoSaleObj status
+  startTime: BigInt!       # GegoSaleObj startTime
+  maxPrice: BigInt       # GegoSaleObj maxPrice
+  minPrice: BigInt       # GegoSaleObj minPrice
+  seller: Bytes!        # GegoSaleObj seller
+  ruleId: BigInt         # GegoTokenV2 ruleId
+  amount: BigInt         # GegoToken amount
+  grade: BigInt           # GegoToken grade
+  createdTime: BigInt! # reference to GegoSaleObj
+}
+
+type EntityCount @entity {
+  id:ID!
+  count:BigInt!
+}
+
+## 1155 
+type Bondly @entity {
+  id: ID!
+  index: BigInt!
+  createdTime: BigInt!
+  blockNum: BigInt!
+  nftAddress: Bytes!
+  isExist: Boolean!
+}
+
+type GegoSaleObj1155 @entity {
+  id: ID!
+  index: BigInt!
+  tokenId: BigInt!
+  seller: Bytes!
+  nft: Bytes!
+  unitPrice: BigInt!
+  # buyTx:  [Bytes!]
+  # buyer: [Bytes!]
+  # tipsFee: [BigInt!]
+  buyLogs: [BuyLog!]
+  status: BigInt!
+  saleTx: Bytes
+  cancelTx: Bytes
+  createdTime: BigInt!
+  amount: BigInt!
+  currency: Bytes!
+}
+
+type GegoSaleObj1155Info @entity {
+  id: ID! # GegoSaleObj1155 id
+  index: BigInt!
+  tokenId: BigInt!
+  gegoSaleObj1155: GegoSaleObj1155!   # reference to GegoSaleObj1155
+  bondly: Bondly                    # reference to Bondly
+  status: BigInt!                    # GegoSaleObj1155 status
+  unitPrice: BigInt                 # GegoSaleObj1155 maxPrice
+  seller: Bytes!                  # GegoSaleObj1155 seller
+  createdTime: BigInt!            # reference to GegoSaleObj1155
+}
+
+type BuyLog @entity {
+  id: ID!
+  buyer: Bytes!
+  tipsFee: BigInt!
+}
